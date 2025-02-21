@@ -1,0 +1,6 @@
+{
+  "rules": {
+    ".read": true,  // Permite leitura globalmente, sem necessidade de autenticação
+    ".write": "auth != null"  // Exige que o usuário esteja autenticado para qualquer operação de escrita
+  }
+}
