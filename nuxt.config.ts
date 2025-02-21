@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    baseURL: 'dna-afetivo',  // Substitua pelo nome do seu repositório
+    baseURL: '/dna-afetivo',
   },
   ssr: true,
   css: [
