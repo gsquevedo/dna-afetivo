@@ -16,6 +16,9 @@ export default defineNuxtConfig({
       nuxtPublicMeasurementId: process.env.NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
     }
   },
+  app: {
+    baseURL: 'dna-afetivo',  // Substitua pelo nome do seu repositório
+  },
   ssr: true,
   css: [
     '@/assets/css/global.css'
