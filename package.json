@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+    "@pinia/nuxt": "^0.5.5",
+    "axios": "^1.7.3",
+    "firebase": "^10.12.5",
+    "leaflet": "^1.9.4",
+    "naive-ui": "^2.40.1",
+    "nuxt": "^3.13.2",
+    "nuxtjs-naive-ui": "^1.0.2",
+    "pinia": "^2.2.4",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@vicons/ionicons5": "^0.12.0"
+  }
+}
