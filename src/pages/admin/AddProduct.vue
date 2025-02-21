@@ -76,7 +76,17 @@ export default {
       this.user = currentUser || null;
     });
   },
+  created() {
+    this.checkAuthStatus();
+  },
   methods: {
+    async checkAuthStatus() {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (!user) {
+        this.$router.push('/'); // Redireciona para a página de login, se necessário
+      }
+    },
     updateFileAccept() {
       if (this.newProduct.category === 'jogos-impressos') {
         this.fileAccept = 'application/pdf';
@@ -89,6 +99,11 @@ export default {
     async handleSave() {
       if (!this.selectedFile) {
         alert('Por favor, faça o upload de um arquivo.');
+        return;
+      }
+
+      if (!this.user) {
+        alert('Você precisa estar logado para adicionar um produto.');
         return;
       }
 
@@ -159,7 +174,7 @@ export default {
 <style scoped>
 .add-product {
   font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;
+  background-color: #F5F5DC;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -169,6 +184,13 @@ export default {
 .welcome-section {
   text-align: center;
   margin-bottom: 30px;
+}
+
+.warning-message {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .form-section {
@@ -186,7 +208,7 @@ form div {
 
 label {
   font-weight: bold;
-  color: #2c3e50;
+  color: #000;
   font-size: 1rem;
 }
 

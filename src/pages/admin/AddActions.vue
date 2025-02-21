@@ -8,17 +8,11 @@
         <p class="subtitle">Aqui você pode adicionar uma nova exposição, incluindo o título, data, local, descrição, participantes e imagem. A exposição será salva no nosso banco de dados.</p>
         <form @submit.prevent="addExhibition">
           <input v-model="newExhibition.title" placeholder="Título da Exposição" required />
-          
           <input v-model="newExhibition.event" placeholder="Evento" required />
-
           <input v-model="newExhibition.year" type="number" placeholder="Ano da Exposição" required />
-          
           <input v-model="newExhibition.institution" placeholder="Instituição" required />
-          
           <textarea v-model="newExhibition.description" placeholder="Descrição"></textarea>
-
           <input v-model="newExhibition.participants" placeholder="Participantes (Nomes dos Alunos)" />
-          
           <button type="submit">Adicionar Exposição</button>
         </form>
       </div>
@@ -29,21 +23,13 @@
         <p class="subtitle">Aqui você pode adicionar uma nova oficina, incluindo o título, data, local, descrição, participantes e imagem. A oficina será registrada em nossa plataforma.</p>
         <form @submit.prevent="addWorkshop">
           <input v-model="newWorkshop.title" placeholder="Título da Oficina" required />
-          
           <input v-model="newWorkshop.year" type="number" placeholder="Ano da Oficina" required />
-          
           <input v-model="newWorkshop.location" placeholder="Local" required />
-
           <input v-model="newWorkshop.class" placeholder="Classe" required />
-
           <input v-model="newWorkshop.city" placeholder="Cidade" required />
-
           <input v-model="newWorkshop.state" placeholder="Estado" required />
-          
           <textarea v-model="newWorkshop.description" placeholder="Descrição"> </textarea>
-
           <input v-model="newWorkshop.participants" placeholder="Participantes (Nomes dos Alunos)" />
-          
           <button type="submit">Adicionar Oficina</button>
         </form>
       </div>
@@ -53,6 +39,7 @@
 
 <script>
 import { ref as dbRef, set } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 
 export default {
   name: 'AddActionPage',
@@ -78,7 +65,18 @@ export default {
       },
     };
   },
+  created() {
+    this.checkAuthStatus();
+  },
   methods: {
+    async checkAuthStatus() {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (!user) {
+        this.$router.push('/'); // Redireciona para a página de login, se necessário
+      }
+    },
+
     async addExhibition() {
       const db = this.$database;
       const exhibitionRef = dbRef(db, `exhibitions/${Date.now()}`);
@@ -164,7 +162,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 45%;
-  background-color: #f9f9f9;
+  background-color: #fff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -172,7 +170,7 @@ export default {
 }
 
 h2 {
-  color: #333;
+  color: #000;
   margin-bottom: 20px;
 }
 

@@ -135,6 +135,7 @@
 
 <script>
 import { ref, set } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 
 export default {
   name: 'PublicationsAdmin',
@@ -154,7 +155,17 @@ export default {
       imageUrl: '',
     };
   },
+  created() {
+    this.checkAuthStatus();
+  },
   methods: {
+    async checkAuthStatus() {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (!user) {
+        this.$router.push('/'); // Redireciona para a página de login, se necessário
+      }
+    },
     async handleSave() {
       try {
         const db = this.$database;

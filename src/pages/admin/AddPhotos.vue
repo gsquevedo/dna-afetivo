@@ -1,40 +1,43 @@
 <template>
-  <div class="photo-panel">
-    <h1>Painel de Fotos</h1>
-    <form @submit.prevent="uploadPhoto" class="upload-form">
-      <div class="form-group">
-        <label for="photoTitle">Título da Foto</label>
-        <input
-          type="text"
-          v-model="photoTitle"
-          id="photoTitle"
-          required
-          placeholder="Digite o título da foto"
-        />
-      </div>
+  <div class="page-container">
+    <div class="photo-panel">
+      <h1>BEM-VINDO AO PAINEL DE FOTOS</h1>
+      <form @submit.prevent="uploadPhoto" class="upload-form">
+        <div class="form-group">
+          <label for="photoTitle">Título da Foto</label>
+          <input
+            type="text"
+            v-model="photoTitle"
+            id="photoTitle"
+            required
+            placeholder="Digite o título da foto"
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="photoFile">Selecione a Foto</label>
-        <input
-          type="file"
-          ref="fileInput"
-          @change="onFileChange"
-          accept="image/*"
-          required
-        />
-      </div>
+        <div class="form-group">
+          <label for="photoFile">Selecione a Foto</label>
+          <input
+            type="file"
+            ref="fileInput"
+            @change="onFileChange"
+            accept="image/*"
+            required
+          />
+        </div>
 
-      <button type="submit" class="upload-button">Adicionar Foto</button>
-    </form>
+        <button type="submit" class="upload-button">Adicionar Foto</button>
+      </form>
 
-    <div v-if="uploadProgress > 0" class="progress-container">
-      <p>Progresso do Upload: {{ uploadProgress }}%</p>
-      <div class="progress-bar">
-        <div class="progress-fill" :style="{ width: uploadProgress + '%' }"></div>
+      <div v-if="uploadProgress > 0" class="progress-container">
+        <p>Progresso do Upload: {{ uploadProgress }}%</p>
+        <div class="progress-bar">
+          <div class="progress-fill" :style="{ width: uploadProgress + '%' }"></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import { getStorage, ref as storageRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -49,7 +52,17 @@ export default {
       uploadProgress: 0,
     };
   },
+  created() {
+    this.checkAuthStatus();
+  },
   methods: {
+    async checkAuthStatus() {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (!user) {
+        this.$router.push('/'); // Redireciona para a página de login, se necessário
+      }
+    },
     onFileChange(event) {
       const file = event.target.files[0];
       if (file && file.type.startsWith("image/")) {
@@ -117,21 +130,28 @@ export default {
 </script>
 
 <style scoped>
-.photo-panel {
+.page-container {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #F5F5DC;
+}
+
+.photo-panel {
+  width: 100%;
   max-width: 600px;
-  margin: 20px auto;
+  max-height: 400px;
   padding: 30px;
-  background: #f0f0f0;
+  margin-top: 50px;
+  background: #fff;
   border-radius: 12px;
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   text-align: center;
 }
 
 h1 {
   font-size: 2rem;
-  color: #333;
+  color: #000;
   margin-bottom: 20px;
 }
 
@@ -150,7 +170,7 @@ h1 {
 label {
   font-weight: bold;
   margin-bottom: 5px;
-  color: #555;
+  color: #000;
 }
 
 input[type="text"],
@@ -164,7 +184,6 @@ input[type="file"] {
 
 input[type="text"]:focus,
 input[type="file"]:focus {
-  /* border-color: #4CAF50; */
   outline: none;
 }
 
@@ -200,4 +219,5 @@ input[type="file"]:focus {
   background-color: #4CAF50;
   transition: width 0.3s ease;
 }
+
 </style>

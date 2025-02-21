@@ -49,7 +49,7 @@ export default {
   text-align: center;
   padding: 20px;
   height: 100%;
-  width: 100%; 
+  width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
   display: flex;
@@ -57,7 +57,6 @@ export default {
   justify-content: space-between;
   background-color: #F5F5DC;
 }
-
 
 h1 {
   color: #333;
@@ -119,7 +118,7 @@ h1 {
 /* Estilo para telas menores que 600px */
 @media (max-width: 600px) {
   .album-container {
-    min-height: 100vh; 
+    min-height: 100vh;
   }
 
   .album {

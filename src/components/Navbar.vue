@@ -14,8 +14,8 @@
 
       <ul :class="['navbar-links', { open: isMenuOpen }]">
         <li><nuxt-link to="/" exact active-class="active">Sobre</nuxt-link></li>
-        <li v-if="isAdmin" ><nuxt-link to="/admin/products" active-class="active">Produtos</nuxt-link></li>
         <li v-if="isAdmin"><nuxt-link to="/admin/photos" active-class="active">Fotos</nuxt-link></li>
+        <li v-if="isAdmin" ><nuxt-link to="/admin/products" active-class="active">Produtos</nuxt-link></li>
         <li v-if="!isAdmin"><nuxt-link to="/photos" active-class="active">Fotos</nuxt-link></li>
         <li v-if="!isAdmin"><nuxt-link to="/products" active-class="active">Produtos</nuxt-link></li>
         <li v-if="isAdmin" ><nuxt-link to="/admin/actions" active-class="active">Ações</nuxt-link></li>
