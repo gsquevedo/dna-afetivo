@@ -84,7 +84,7 @@ export default {
       const auth = getAuth();
       const user = auth.currentUser;
       if (!user) {
-        this.$router.push('/'); // Redireciona para a página de login, se necessário
+        this.$router.push('/user'); // Redireciona para a página de login, se necessário
       }
     },
     updateFileAccept() {
