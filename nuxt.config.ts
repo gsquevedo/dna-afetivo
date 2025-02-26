@@ -37,7 +37,7 @@ export default defineNuxtConfig({
   hooks: {
     'pages:extend'(routes) {
       routes.push(
-        { name: 'IndexPage', path: '/', file: resolve(__dirname, './src/pages/user/Index.vue') },
+        { name: 'IndexPage', path: '/user', file: resolve(__dirname, './src/pages/user/Index.vue') },
         { name: 'ProductsPage', path: '/products', file: resolve(__dirname, './src/pages/Products.vue') },
         { name: 'AddProduct', path: '/admin/products', file: resolve(__dirname, './src/pages/admin/AddProduct.vue') },
         { name: 'ActionsPage', path: '/actions', file: resolve(__dirname, './src/pages/Actions.vue') },
@@ -63,7 +63,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: [
-        '/', '/products', '/admin/products', '/actions', '/admin/actions',
+        '/user', '/products', '/admin/products', '/actions', '/admin/actions',
         '/publications', '/photos', '/admin/photos', '/admin/sign-in',
         '/admin/publications', '/admin/sign-up'
       ]

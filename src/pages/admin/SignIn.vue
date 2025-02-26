@@ -33,7 +33,7 @@ const login = async () => {
 
     if (user) {
       authStore.login();
-      router.push('/');
+      router.push('/user');
     }
   } catch (error) {
     console.error("Erro ao fazer login:", error);
