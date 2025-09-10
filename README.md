@@ -47,10 +47,10 @@ O projeto combina elementos de **narrativa, tecnologia audiovisual e interativid
 5. Abra no navegador:
 http://localhost:3000
 
-🏷️ Tags
+## 🏷️ Tags
 
 Nuxt Vue TypeScript JavaScript Frontend Cultura Indígena Projeto Acadêmico
 
-👥 Equipe
+## 👥 Equipe
 
 Projeto desenvolvido pelo LabInter/UFSM em parceria com comunidades indígenas, pesquisadores e artistas.
