@@ -49,7 +49,7 @@ http://localhost:3000
 
 ## 🏷️ Tags
 
-Nuxt Vue TypeScript JavaScript Frontend Cultura Indígena Projeto Acadêmico
+Nuxt • Vue • TypeScript • JavaScript • Frontend • Cultura Indígena • Projeto Acadêmico
 
 ## 👥 Equipe
 
