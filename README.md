@@ -22,6 +22,7 @@ O projeto combina elementos de **narrativa, tecnologia audiovisual e interativid
 
 ## 🛠️ Tecnologias Utilizadas
 
+- [Nuxt.js] (https://nuxt.com/)
 - [Vue.js](https://vuejs.org/)  
 - [TypeScript](https://www.typescriptlang.org/)  
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)  
